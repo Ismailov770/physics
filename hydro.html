@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гидроэнергетика | Альтернативные источники энергии</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .bg-gradient-hydro {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        }
+        .canvas-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .stats-card {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.9);
+            transition: transform 0.3s ease;
+        }
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-gradient-hydro text-white p-6 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div>
+                <h1 class="text-4xl font-bold mb-2">Гидроэнергетика</h1>
+                <p class="text-blue-100">Энергия воды для устойчивого развития</p>
+            </div>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="hover:text-blue-200 transition">Главная</a></li>
+                    <li><a href="#how-it-works" class="hover:text-blue-200 transition">Принцип работы</a></li>
+                    <li><a href="#efficiency" class="hover:text-blue-200 transition">Эффективность</a></li>
+                    <li><a href="#calculator" class="hover:text-blue-200 transition">Калькулятор</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-8 p-4">
+        <section id="animation" class="mb-12">
+            <div class="canvas-container bg-blue-900">
+                <canvas id="hydroAnimation" width="800" height="500" class="w-full h-auto"></canvas>
+                <div class="absolute top-4 left-4 stats-card p-4 rounded-lg">
+                    <h3 class="font-bold text-gray-800">Текущие показатели:</h3>
+                    <p id="waterFlow" class="text-blue-600">Поток воды: 0 м³/с</p>
+                    <p id="powerOutput" class="text-green-600">Мощность: 0 МВт</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="mb-12 bg-white rounded-lg shadow-xl p-8">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Как работает гидроэлектростанция?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <ol class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white font-bold mr-3">1</span>
+                            <div>
+                                <h3 class="font-semibold mb-1">Накопление воды</h3>
+                                <p class="text-gray-600">Вода накапливается в водохранилище за плотиной</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white font-bold mr-3">2</span>
+                            <div>
+                                <h3 class="font-semibold mb-1">Падение воды</h3>
+                                <p class="text-gray-600">Вода падает через специальные водоводы</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white font-bold mr-3">3</span>
+                            <div>
+                                <h3 class="font-semibold mb-1">Вращение турбины</h3>
+                                <p class="text-gray-600">Поток воды вращает гидротурбину</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white font-bold mr-3">4</span>
+                            <div>
+                                <h3 class="font-semibold mb-1">Генерация</h3>
+                                <p class="text-gray-600">Турбина вращает генератор, производя электричество</p>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-blue-800 mb-2">Преимущества ГЭС</h3>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>Возобновляемый источник энергии</li>
+                            <li>Высокий КПД (до 95%)</li>
+                            <li>Длительный срок службы (50-100 лет)</li>
+                            <li>Возможность регулирования мощности</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="calculator" class="mb-12 bg-white rounded-lg shadow-xl p-8">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Калькулятор мощности ГЭС</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Высота падения воды (м)</label>
+                    <input type="number" id="water-height" class="w-full p-2 border rounded-md" value="100">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Расход воды (м³/с)</label>
+                    <input type="number" id="water-flow" class="w-full p-2 border rounded-md" value="50">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">КПД турбины (%)</label>
+                    <input type="number" id="efficiency" class="w-full p-2 border rounded-md" value="90">
+                </div>
+            </div>
+            <button id="calculate" class="mt-4 bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition">
+                Рассчитать мощность
+            </button>
+            <div id="result" class="mt-4 text-lg font-semibold text-gray-800"></div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Гидроэнергетика</h3>
+                    <p class="text-gray-400">Энергия воды для будущих поколений</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Полезные ссылки</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">О технологии</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Исследования</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Новости</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Контакты</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>info@hydropower.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            <span>+7 (123) 456-7890</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                <p>&copy; 2023 Гидроэнергетика. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('hydroAnimation');
+            const ctx = canvas.getContext('2d');
+
+            // Параметры анимации
+            let waterLevel = 0;
+            let turbineRotation = 0;
+            let particles = [];
+            const particleCount = 100;
+
+            // Создание частиц воды
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * 200,
+                    speed: 2 + Math.random() * 2,
+                    size: 2 + Math.random() * 3
+                });
+            }
+
+            function drawDam() {
+                // Плотина
+                ctx.fillStyle = '#2d3748';
+                ctx.beginPath();
+                ctx.moveTo(200, 50);
+                ctx.lineTo(250, 50);
+                ctx.lineTo(250, 350);
+                ctx.lineTo(200, 350);
+                ctx.closePath();
+                ctx.fill();
+
+                // Водохранилище
+                ctx.fillStyle = '#4299e1';
+                ctx.fillRect(0, 50, 200, 150);
+
+                // Нижний водоем
+                ctx.fillStyle = '#4299e1';
+                ctx.fillRect(250, 300, canvas.width - 250, 50);
+            }
+
+            function drawTurbine() {
+                ctx.save();
+                ctx.translate(225, 250);
+                ctx.rotate(turbineRotation);
+
+                // Центр турбины
+                ctx.fillStyle = '#718096';
+                ctx.beginPath();
+                ctx.arc(0, 0, 15, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Лопасти
+                for (let i = 0; i < 8; i++) {
+                    ctx.fillStyle = '#a0aec0';
+                    ctx.save();
+                    ctx.rotate(i * Math.PI / 4);
+                    ctx.fillRect(-4, -25, 8, 50);
+                    ctx.restore();
+                }
+
+                ctx.restore();
+            }
+
+            function updateParticles() {
+                particles.forEach(particle => {
+                    // Движение частиц воды
+                    if (particle.x < 200) {
+                        particle.y += particle.speed * 0.2;
+                        if (particle.y > 200) {
+                            particle.y = 50;
+                            particle.x = Math.random() * 200;
+                        }
+                    } else if (particle.x > 200 && particle.x < 250) {
+                        particle.y += particle.speed;
+                        turbineRotation += 0.001 * particle.speed;
+                    } else {
+                        particle.x += particle.speed;
+                        if (particle.x > canvas.width) {
+                            particle.x = 250;
+                            particle.y = Math.random() * 50 + 250;
+                        }
+                    }
+
+                    // Отрисовка частиц
+                    ctx.fillStyle = 'rgba(66, 153, 225, 0.6)';
+                    ctx.beginPath();
+                    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Фон
+                const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+                gradient.addColorStop(0, '#1a365d');
+                gradient.addColorStop(1, '#2a4365');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                drawDam();
+                updateParticles();
+                drawTurbine();
+
+                // Обновление показателей
+                const flow = (Math.sin(Date.now() / 1000) + 1) * 25 + 50;
+                const power = (flow * 9.81 * 100 * 0.9 / 1000).toFixed(1);
+                document.getElementById('waterFlow').textContent = `Поток воды: ${flow.toFixed(1)} м³/с`;
+                document.getElementById('powerOutput').textContent = `Мощность: ${power} МВт`;
+
+                requestAnimationFrame(animate);
+            }
+
+            // Калькулятор мощности
+            document.getElementById('calculate').addEventListener('click', function() {
+                const height = parseFloat(document.getElementById('water-height').value);
+                const flow = parseFloat(document.getElementById('water-flow').value);
+                const efficiency = parseFloat(document.getElementById('efficiency').value) / 100;
+
+                const power = 9.81 * height * flow * efficiency / 1000;
+
+                document.getElementById('result').textContent = 
+                    `Расчетная мощность: ${power.toFixed(2)} МВт`;
+            });
+
+            animate();
+        });
+    </script>
+</body>
+</html>

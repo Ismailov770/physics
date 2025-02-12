@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ветровая энергия | Альтернативные источники энергии</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .bg-gradient-wind {
+            background: linear-gradient(135deg, #48a9e6 0%, #1e3c72 100%);
+        }
+        .canvas-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .stats-card {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.9);
+            transition: transform 0.3s ease;
+        }
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-gradient-wind text-white p-6 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div>
+                <h1 class="text-4xl font-bold mb-2">Ветровая энергия</h1>
+                <p class="text-blue-100">Энергия ветра для устойчивого будущего</p>
+            </div>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="hover:text-blue-200 transition">Главная</a></li>
+                    <li><a href="#how-it-works" class="hover:text-blue-200 transition">Принцип работы</a></li>
+                    <li><a href="#efficiency" class="hover:text-blue-200 transition">Эффективность</a></li>
+                    <li><a href="#calculator" class="hover:text-blue-200 transition">Калькулятор</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-8 p-4">
+        <section id="animation" class="mb-12">
+            <div class="canvas-container bg-sky-100">
+                <canvas id="windAnimation" width="800" height="500" class="w-full h-auto"></canvas>
+                <div class="absolute top-4 left-4 stats-card p-4 rounded-lg">
+                    <h3 class="font-bold text-gray-800">Текущие показатели:</h3>
+                    <p id="windSpeed" class="text-blue-600">Скорость ветра: 0 м/с</p>
+                    <p id="powerOutput" class="text-green-600">Мощность: 0 кВт</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="mb-12 bg-white rounded-lg shadow-xl p-8">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Как работает ветрогенератор?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <ol class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white font-bold mr-3">1</span>
+                            <div>
+                                <h3 class="font-semibold mb-1">Захват ветра</h3>
+                                <p class="text-gray-600">Лопасти турбины захватывают кинетическую энергию ветра</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white font-bold mr-3">2</span>
+                            <div>
+                                <h3 class="font-semibold mb-1">Вращение</h3>
+                                <p class="text-gray-600">Ветер вращает лопасти, которые соединены с ротором</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white font-bold mr-3">3</span>
+                            <div>
+                                <h3 class="font-semibold mb-1">Генерация</h3>
+                                <p class="text-gray-600">Ротор вращает генератор, производя электричество</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white font-bold mr-3">4</span>
+                            <div>
+                                <h3 class="font-semibold mb-1">Распределение</h3>
+                                <p class="text-gray-600">Электричество передается в сеть через трансформатор</p>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-blue-800 mb-2">Интересные факты</h3>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>Современные ветрогенераторы могут достигать высоты 150 метров</li>
+                            <li>Одна турбина может обеспечить энергией до 1500 домов</li>
+                            <li>Срок службы ветрогенератора составляет 20-25 лет</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="calculator" class="mb-12 bg-white rounded-lg shadow-xl p-8">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Калькулятор мощности</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Скорость ветра (м/с)</label>
+                    <input type="number" id="wind-speed" class="w-full p-2 border rounded-md" value="5">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Диаметр ротора (м)</label>
+                    <input type="number" id="rotor-diameter" class="w-full p-2 border rounded-md" value="90">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">КПД турбины (%)</label>
+                    <input type="number" id="efficiency" class="w-full p-2 border rounded-md" value="35">
+                </div>
+            </div>
+            <button id="calculate" class="mt-4 bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition">
+                Рассчитать мощность
+            </button>
+            <div id="result" class="mt-4 text-lg font-semibold text-gray-800"></div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Ветровая энергетика</h3>
+                    <p class="text-gray-400">Чистая энергия для будущих поколений</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Полезные ссылки</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">О технологии</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Исследования</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Новости</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Контакты</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>info@windpower.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            <span>+7 (123) 456-7890</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                <p>&copy; 2023 Ветровая энергетика. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('windAnimation');
+            const ctx = canvas.getContext('2d');
+            let rotation = 0;
+            let windSpeed = 5;
+            let time = 0;
+
+            class Cloud {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = 50 + Math.random() * 100;
+                    this.speed = 0.5 + Math.random() * 1;
+                    this.width = 60 + Math.random() * 40;
+                }
+
+                draw() {
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.width/3, 0, Math.PI * 2);
+                    ctx.arc(this.x + this.width/3, this.y - 10, this.width/3, 0, Math.PI * 2);
+                    ctx.arc(this.x + this.width/2, this.y + 5, this.width/3, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                update() {
+                    this.x += this.speed;
+                    if (this.x > canvas.width + 100) {
+                        this.x = -100;
+                    }
+                }
+            }
+
+            const clouds = Array(5).fill().map(() => new Cloud());
+
+            function drawWindTurbine(x, y, rotation) {
+                // Башня
+                ctx.fillStyle = '#4a5568';
+                ctx.beginPath();
+                ctx.moveTo(x - 15, y);
+                ctx.lineTo(x + 15, y);
+                ctx.lineTo(x + 8, y - 150);
+                ctx.lineTo(x - 8, y - 150);
+                ctx.closePath();
+                ctx.fill();
+
+                // Основание башни
+                ctx.fillStyle = '#2d3748';
+                ctx.beginPath();
+                ctx.ellipse(x, y, 20, 10, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Гондола
+                ctx.fillStyle = '#718096';
+                ctx.beginPath();
+                ctx.ellipse(x, y - 150, 15, 8, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Лопасти
+                ctx.save();
+                ctx.translate(x, y - 150);
+                ctx.rotate(rotation);
+
+                for (let i = 0; i < 3; i++) {
+                    ctx.fillStyle = '#fff';
+                    ctx.beginPath();
+                    ctx.ellipse(0, -40, 5, 40, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.rotate((Math.PI * 2) / 3);
+                }
+                ctx.restore();
+            }
+
+            function drawLandscape() {
+                // Небо
+                const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+                gradient.addColorStop(0, '#87CEEB');
+                gradient.addColorStop(1, '#B0E0E6');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Холмы
+                ctx.fillStyle = '#90EE90';
+                ctx.beginPath();
+                ctx.moveTo(0, canvas.height);
+                ctx.quadraticCurveTo(canvas.width * 0.25, canvas.height - 50,
+                                   canvas.width * 0.5, canvas.height - 20);
+                ctx.quadraticCurveTo(canvas.width * 0.75, canvas.height - 70,
+                                   canvas.width, canvas.height - 30);
+                ctx.lineTo(canvas.width, canvas.height);
+                ctx.fill();
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                drawLandscape();
+                
+                // Анимация облаков
+                clouds.forEach(cloud => {
+                    cloud.draw();
+                    cloud.update();
+                });
+
+                // Обновление скорости ветра
+                time += 0.01;
+                windSpeed = 5 + Math.sin(time) * 2;
+                rotation += 0.02 * windSpeed;
+
+                // Отрисовка ветрогенераторов
+                drawWindTurbine(200, canvas.height - 100, rotation);
+                drawWindTurbine(400, canvas.height - 120, rotation + 0.5);
+                drawWindTurbine(600, canvas.height - 90, rotation + 1);
+
+                // Обновление показателей
+                document.getElementById('windSpeed').textContent = `Скорость ветра: ${windSpeed.toFixed(1)} м/с`;
+                const power = (windSpeed ** 3 * 0.5 * 1.225 * Math.PI * 45 * 45 * 0.35 / 1000).toFixed(1);
+                document.getElementById('powerOutput').textContent = `Мощность: ${power} кВт`;
+
+                requestAnimationFrame(animate);
+            }
+
+            // Калькулятор мощности
+            document.getElementById('calculate').addEventListener('click', function() {
+                const windSpeed = parseFloat(document.getElementById('wind-speed').value);
+                const rotorDiameter = parseFloat(document.getElementById('rotor-diameter').value);
+                const efficiency = parseFloat(document.getElementById('efficiency').value) / 100;
+
+                const area = Math.PI * (rotorDiameter / 2) ** 2;
+                const power = 0.5 * 1.225 * area * windSpeed ** 3 * efficiency / 1000;
+
+                document.getElementById('result').textContent = 
+                    `Расчетная мощность: ${power.toFixed(2)} кВт`;
+            });
+
+            animate();
+        });
+    </script>
+</body>
+</html>

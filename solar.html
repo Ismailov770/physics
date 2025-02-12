@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Солнечная энергия | Альтернативные источники электроэнергии</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .bg-gradient {
+            background: linear-gradient(90deg, #ff8c00 0%, #ffd700 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-gradient text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-bold">Солнечная энергия</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="index.html" class="hover:text-yellow-200 transition">Главная</a></li>
+                    <li><a href="#how-it-works" class="hover:text-yellow-200 transition">Как это работает</a></li>
+                    <li><a href="#advantages" class="hover:text-yellow-200 transition">Преимущества</a></li>
+                    <li><a href="#future" class="hover:text-yellow-200 transition">Будущее</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-8 p-4">
+        <section id="intro" class="mb-12 text-center">
+            <h2 class="text-4xl font-bold mb-4 text-yellow-600">Энергия солнца</h2>
+            <p class="text-xl">Откройте для себя неисчерпаемый потенциал солнечной энергии.</p>
+        </section>
+
+        <section id="how-it-works" class="mb-12 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-3xl font-bold mb-4 text-yellow-600">Как это работает</h2>
+            <div class="flex flex-wrap items-center">
+                <div class="w-full md:w-1/2 pr-4">
+                    <p class="mb-4">Солнечные панели преобразуют энергию солнечного света в электричество. Вот основные этапы этого процесса:</p>
+                    <ol class="list-decimal list-inside mb-4">
+                        <li>Солнечный свет попадает на фотоэлементы панели</li>
+                        <li>Фотоны света выбивают электроны в полупроводниковом материале</li>
+                        <li>Возникает электрический ток</li>
+                        <li>Инвертор преобразует постоянный ток в переменный</li>
+                        <li>Электричество поступает в сеть или накапливается в аккумуляторах</li>
+                    </ol>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <canvas id="solarAnimation" width="400" height="300" class="w-full h-auto border border-gray-300 rounded-lg shadow-lg"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="advantages" class="mb-12 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-3xl font-bold mb-4 text-yellow-600">Преимущества солнечной энергии</h2>
+            <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <li class="flex items-center">
+                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                    <span>Неисчерпаемый источник энергии</span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                    <span>Экологически чистое производство</span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                    <span>Низкие эксплуатационные расходы</span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                    <span>Возможность автономного энергоснабжения</span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                    <span>Минимальное обслуживание</span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                    <span>Снижение зависимости от ископаемого топлива</span>
+                </li>
+            </ul>
+        </section>
+
+        <section id="future" class="mb-12 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-3xl font-bold mb-4 text-yellow-600">Будущее солнечной энергетики</h2>
+            <p class="mb-4">Солнечная энергетика продолжает развиваться и совершенствоваться. Вот некоторые перспективные направления:</p>
+            <ul class="list-disc list-inside mb-4">
+                <li>Повышение эффективности солнечных панелей</li>
+                <li>Разработка прозрачных солнечных панелей для окон</li>
+                <li>Интеграция солнечных элементов в строительные материалы</li>
+                <li>Создание более эффективных систем хранения энергии</li>
+                <li>Развитие технологий концентрированной солнечной энергии</li>
+            </ul>
+            <p>С развитием технологий солнечная энергия становится все более доступной и эффективной, играя ключевую роль в переходе к чистой энергетике.</p>
+        </section>
+
+        <section id="interactive" class="mb-12 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-3xl font-bold mb-4 text-yellow-600">Интерактивный калькулятор</h2>
+            <p class="mb-4">Рассчитайте потенциальную выработку энергии солнечной панелью:</p>
+            <div class="flex flex-wrap -mx-2">
+                <div class="w-full md:w-1/3 px-2 mb-4">
+                    <label for="panel-power" class="block mb-2">Мощность панели (Вт):</label>
+                    <input type="number" id="panel-power" class="w-full p-2 border rounded" value="300">
+                </div>
+                <div class="w-full md:w-1/3 px-2 mb-4">
+                    <label for="sun-hours" class="block mb-2">Солнечных часов в день:</label>
+                    <input type="number" id="sun-hours" class="w-full p-2 border rounded" value="5">
+                </div>
+                <div class="w-full md:w-1/3 px-2 mb-4">
+                    <label for="efficiency" class="block mb-2">КПД системы (%):</label>
+                    <input type="number" id="efficiency" class="w-full p-2 border rounded" value="80">
+                </div>
+            </div>
+            <button id="calculate" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition">Рассчитать</button>
+            <p id="result" class="mt-4 text-xl font-bold"></p>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-between items-center">
+                <div class="w-full md:w-1/3 mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-2">Солнечная энергетика</h3>
+                    <p>Энергия солнца для светлого будущего</p>
+                </div>
+                <div class="w-full md:w-1/3 mb-6 md:mb-0">
+                    <h4 class="text-xl font-semibold mb-2">Контакты</h4>
+                    <p>Email: solar@alt-energy.com</p>
+                    <p>Телефон: +7 (123) 456-7890</p>
+                </div>
+                <div class="w-full md:w-1/3">
+                    <h4 class="text-xl font-semibold mb-2">Следите за нами</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl hover:text-yellow-400 transition"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-2xl hover:text-yellow-400 transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-2xl hover:text-yellow-400 transition"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <p>&copy; 2023 Альтернативная энергетика. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('solarAnimation');
+            const ctx = canvas.getContext('2d');
+
+            function drawSun(x, y, radius) {
+                ctx.fillStyle = '#FFD700';
+                ctx.beginPath();
+                ctx.arc(x, y, radius, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Sun rays
+                ctx.strokeStyle = '#FFD700';
+                for (let i = 0; i < 8; i++) {
+                    const angle = (i / 8) * Math.PI * 2;
+                    ctx.beginPath();
+                    ctx.moveTo(x + Math.cos(angle) * (radius + 5), y + Math.sin(angle) * (radius + 5));
+                    ctx.lineTo(x + Math.cos(angle) * (radius + 20), y + Math.sin(angle) * (radius + 20));
+                    ctx.stroke();
+                }
+            }
+
+            function drawPanel(x, y, width, height) {
+                ctx.fillStyle = '#4682B4';
+                ctx.fillRect(x, y, width, height);
+
+                // Draw grid lines
+                ctx.strokeStyle = '#FFFFFF';
+                for (let i = 0; i <= 3; i++) {
+                    ctx.beginPath();
+                    ctx.moveTo(x, y + i * (height / 3));
+                    ctx.lineTo(x + width, y + i * (height / 3));
+                    ctx.stroke();
+                }
+                for (let i = 0; i <= 4; i++) {
+                    ctx.beginPath();
+                    ctx.moveTo(x + i * (width / 4), y);
+                    ctx.lineTo(x + i * (width / 4), y + height);
+                    ctx.stroke();
+                }
+            }
+
+            function drawRay(startX, startY, endX, endY, progress) {
+                ctx.strokeStyle = 'rgba(255, 255, 0, 0.5)';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(startX, startY);
+                ctx.lineTo(startX + (endX - startX) * progress, startY + (endY - startY) * progress);
+                ctx.stroke();
+            }
+
+            function drawElectron(x, y) {
+                ctx.fillStyle = '#FF0000';
+                ctx.beginPath();
+                ctx.arc(x, y, 3, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            const sunX = 75;
+            const sunY = 75;
+            const panelX = 200;
+            const panelY = 200;
+            const panelWidth = 150;
+            const panelHeight = 75;
+
+            const rays = [];
+            for (let i = 0; i < 10; i++) {
+                rays.push({
+                    startX: sunX,
+                    startY: sunY,
+                    endX: panelX + Math.random() * panelWidth,
+                    endY: panelY,
+                    progress: 0
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Draw sky
+                ctx.fillStyle = '#87CEEB';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                drawSun(sunX, sunY, 40);
+                drawPanel(panelX, panelY, panelWidth, panelHeight);
+
+                rays.forEach(ray => {
+                    drawRay(ray.startX, ray.startY, ray.endX, ray.endY, ray.progress);
+                    ray.progress += 0.02;
+                    if (ray.progress >= 1) {
+                        ray.progress = 0;
+                        ray.endX = panelX + Math.random() * panelWidth;
+                    }
+                });
+
+                for (let i = 0; i < 5; i++) {
+                    drawElectron(panelX + Math.random() * panelWidth, panelY + Math.random() * panelHeight);
+                }
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+
+            // Calculator functionality
+            document.getElementById('calculate').addEventListener('click', function() {
+                const panelPower = parseFloat(document.getElementById('panel-power').value);
+                const sunHours = parseFloat(document.getElementById('sun-hours').value);
+                const efficiency = parseFloat(document.getElementById('efficiency').value) / 100;
+                
+                const dailyEnergy = panelPower * sunHours * efficiency / 1000; // kWh
+                
+                document.getElementById('result').textContent = `Ваша солнечная панель может производить примерно ${dailyEnergy.toFixed(2)} кВт*ч энергии в день при данных условиях.`;
+            });
+        });
+    </script>
+</body>
+</html>

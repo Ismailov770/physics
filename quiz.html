@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Квиз по альтернативным источникам энергии</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-purple-600 text-white p-4 shadow-lg">
+        <div class="container mx-auto">
+            <h1 class="text-3xl font-bold text-center">Квиз по альтернативным источникам энергии</h1>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-8 p-4">
+        <div id="quiz" class="bg-white rounded-lg shadow-md p-6">
+            <div id="question" class="text-2xl font-bold mb-4"></div>
+            <div id="options" class="space-y-2"></div>
+            <button id="submit" class="mt-4 bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 transition">Ответить</button>
+        </div>
+        <div id="results" class="mt-8 bg-white rounded-lg shadow-md p-6 hidden">
+            <h2 class="text-2xl font-bold mb-4">Результаты</h2>
+            <p id="score" class="text-xl mb-4"></p>
+            <button id="restart" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 transition">Начать заново</button>
+        </div>
+    </main>
+
+    <script>
+        const quizData = [
+            {
+                question: "Какой из следующих источников энергии не является возобновляемым?",
+                options: ["Солнечная энергия", "Ветровая энергия", "Ядерная энергия", "Гидроэнергия"],
+                correct: 2
+            },
+            {
+                question: "Какой компонент солнечной панели непосредственно преобразует солнечный свет в электричество?",
+                options: ["Инвертор", "Фотоэлемент", "Аккумулятор", "Трансформатор"],
+                correct: 1
+            },
+            {
+                question: "Какой тип энергии использует разницу температур между поверхностью и глубиной океана?",
+                options: ["Приливная энергия", "Волновая энергия", "Океаническая термальная энергия", "Гидроэнергия"],
+                correct: 2
+            },
+            {
+                question: "Какой газ является основным продуктом анаэробного разложения биомассы?",
+                options: ["Кислород", "Углекислый газ", "Метан", "Водород"],
+                correct: 2
+            },
+            {
+                question: "Какой тип ветровой турбины наиболее распространен в крупномасштабных ветропарках?",
+                options: ["Вертикально-осевые турбины", "Горизонтально-осевые турбины", "Турбины Дарье", "Турбины Савониуса"],
+                correct: 1
+            },
+            {
+                question: "Какой из следующих факторов наиболее важен для эффективности солнечной панели?",
+                options: ["Температура", "Влажность", "Интенсивность света", "Атмосферное давление"],
+                correct: 2
+            },
+            {
+                question: "Какой тип гидроэлектростанции использует два водохранилища на разных высотах?",
+                options: ["Русловая ГЭС", "Приливная ГЭС", "Гидроаккумулирующая станция", "Микро-ГЭС"],
+                correct: 2
+            },
+            {
+                question: "Какой из следующих материалов наиболее часто используется в современных солнечных панелях?",
+                options: ["Кремний", "Германий", "Галлий", "Селен"],
+                correct: 0
+            },
+            {
+                question: "Какой процесс используется для получения водорода из воды с использованием электричества?",
+                options: ["Гидролиз", "Электролиз", "Пиролиз", "Фотолиз"],
+                correct: 1
+            },
+            {
+                question: "Какой тип энергии использует тепло, хранящееся в недрах Земли?",
+                options: ["Солнечная энергия", "Ядерная энергия", "Геотермальная энергия", "Химическая энергия"],
+                correct: 2
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const submitBtn = document.getElementById('submit');
+        const quizEl = document.getElementById('quiz');
+        const resultsEl = document.getElementById('results');
+        const scoreEl = document.getElementById('score');
+        const restartBtn = document.getElementById('restart');
+
+        function loadQuestion() {
+            const question = quizData[currentQuestion];
+            questionEl.textContent = question.question;
+
+            optionsEl.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.classList.add('w-full', 'text-left', 'p-2', 'rounded', 'hover:bg-purple-100', 'transition');
+                button.addEventListener('click', () => selectOption(index));
+                optionsEl.appendChild(button);
+            });
+
+            submitBtn.disabled = true;
+        }
+
+        function selectOption(index) {
+            const buttons = optionsEl.getElementsByTagName('button');
+            for (let button of buttons) {
+                button.classList.remove('bg-purple-200');
+            }
+            buttons[index].classList.add('bg-purple-200');
+            submitBtn.disabled = false;
+        }
+
+        function submitAnswer() {
+            const selectedButton = optionsEl.querySelector('.bg-purple-200');
+            if (!selectedButton) return;
+
+            const selectedAnswer = Array.from(optionsEl.children).indexOf(selectedButton);
+            if (selectedAnswer === quizData[currentQuestion].correct) {
+                score++;
+            }
+
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            quizEl.classList.add('hidden');
+            resultsEl.classList.remove('hidden');
+            scoreEl.textContent = `Вы ответили правильно на ${score} из ${quizData.length} вопросов.`;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            quizEl.classList.remove('hidden');
+            resultsEl.classList.add('hidden');
+            loadQuestion();
+        }
+
+        submitBtn.addEventListener('click', submitAnswer);
+        restartBtn.addEventListener('click', restartQuiz);
+
+        loadQuestion();
+    </script>
+</body>
+</html>
